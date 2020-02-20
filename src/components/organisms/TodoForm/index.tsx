@@ -1,22 +1,20 @@
-import React, { useState } from "react";
+import React from "react";
 import { Container, TextField, Button } from "@material-ui/core";
+import { useTodoForm } from "../../../store/organisms/TodoForm";
 
 export const TodoForm: React.FC = () => {
-  const [title, setTitle] = useState("");
-  const [memo, setMemo] = useState("");
-  const [limit, setLimit] = useState("");
-
-  const submit = () => {
-    if (!title || !memo || !limit) {
-      return;
-    }
-
-    const data = { title, memo, limit };
-    console.log(data);
-  };
+  const {
+    title,
+    setTitle,
+    memo,
+    setMemo,
+    limit,
+    setLimit,
+    submit
+  } = useTodoForm();
 
   return (
-    <Container>
+    <Container style={{ alignItems: "center" }}>
       <TextField
         label={"予定"}
         value={title}
