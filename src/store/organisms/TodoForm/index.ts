@@ -8,13 +8,19 @@ export const useTodoForm = () => {
   const [memo, setMemo] = useState("");
   const [limit, setLimit] = useState("");
 
+  const init = () => {
+    setTitle("");
+    setMemo("");
+    setLimit("");
+  };
+
   const submit = async () => {
-    if (!title || !memo || !limit) {
-      return;
-    }
+    if (!title || !memo || !limit) return;
 
     const data: Todo = { title, memo, limit };
     await addTodo(data);
+    init();
   };
+
   return { title, setTitle, memo, setMemo, limit, setLimit, submit };
 };
